@@ -1,24 +1,28 @@
-# README
+Maxwell Interview Skeleton
+================
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby on Rails
+-------------
 
-Things you may want to cover:
+This application requires:
 
-* Ruby version
+- Rails 5.0.1
+- Node.js 5.1.0
+- NPM 3.5.0
 
-* System dependencies
+Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
 
-* Configuration
+Getting Started
+---------------
+```
+bundle
+cp config/database.yml.sample config/database.yml && cp config/secrets.yml.sample config/secrets.yml
+bundle exec rake db:migrate
+npm install
+```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Add some seed data
+------------------
+```
+rake db:seed
+```
