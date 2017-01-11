@@ -13,7 +13,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 
-gem 'devise', '~> 4.0'
 gem "react_on_rails", "~> 6"
 gem 'bootstrap', '~> 4.0.0.alpha6'
 

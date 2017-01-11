@@ -21,6 +21,12 @@ bundle exec rake db:migrate
 npm install
 ```
 
+Running The Application
+-----------------------
+```
+foreman start -f Procfile.dev
+```
+
 Add some seed data
 ------------------
 ```
