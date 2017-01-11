@@ -94,7 +94,7 @@ latest_prod.dump
 .tags*
 
 # Dev Procfile
-Procfile.dev
+# Procfile.dev
 
 # railroady uml diagrams
 doc/
