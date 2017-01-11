@@ -1,0 +1,12 @@
+<% if notice.present? %>
+  <p class="notice"><%= notice %></p>
+<% end %>
+
+<% if alert.present? %>
+  <p class="error"><%= alert %></p>
+<% end %>
+
+
+<% if devise_error_messages! %>
+  <%= devise_error_messages! %>
+<% end %>
