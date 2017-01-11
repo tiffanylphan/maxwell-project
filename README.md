@@ -16,6 +16,7 @@ Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.
 ```
 bundle
 cp config/database.yml.sample config/database.yml && cp config/secrets.yml.sample config/secrets.yml
+bundle exec rake db:create
 bundle exec rake db:migrate
 npm install
 ```
