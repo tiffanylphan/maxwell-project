@@ -33,7 +33,7 @@ foreman start -f Procfile.dev
 rake db:seed
 ```
 
-# Front end Exercise
+# Frontend Exercise
 
 ### The Exercise:
 Implement a page using React that renders Airbnb search results according to the mockup in `app/assets/fixtures/mockup.png`.
