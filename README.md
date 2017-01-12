@@ -48,11 +48,11 @@ Think about what constitutes a minimum viable product. There is no time limit, b
   - The location cannot be blank.
   - The checkin cannot be submitted without a checkout and vice versa.
 - The search icon is at `app/assets/images/search.png`
+- The search result should link to http://www.airbnb.com/rooms/listing_id
 
 #### Hints/Suggestions:
 - In order to make a cross-domain request to the API, you will have to use JSONP.
 - All images are provided or given as URLs in the JSON. The rest of the page should be styled only via CSS.
-- The search result should link to http://www.airbnb.com/rooms/<listing_id>.
 - Add a date picker for dates. (if this is taking too long, feel free to not use a date picker)
 - Guest dropdown should have options 1-16.
 - No need to add pagination.
