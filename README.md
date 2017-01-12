@@ -33,16 +33,40 @@ foreman start -f Procfile.dev
 rake db:seed
 ```
 
+# Front end Exercise
+
+### The Exercise:
+Implement a page using React that renders Airbnb search results according to the mockup in `app/assets/fixtures/mockup.png`.
+Think about what constitutes a minimum viable product. There is no time limit, but the maximum time you should spend on this is 3 hours.
+
+#### Notes
+- The URL to the search endpoint is https://api.airbnb.com/v1/listings/search?key=bcxkf89pxe8srriv8h3rj7w9t.
+- Submitting the form should re-render the list of results.  
+- Fetch filtered search results from the API over JSONP using the GET parameterslocation, checkin, checkout, and guests.
+- We’ve provided a file `app/assets/fixtures/sample_api_response.js` that has a sample JSONP API response.
+- The form should pass the following validations:
+  - The location cannot be blank.
+  - The checkin cannot be submitted without a checkout and vice versa.
+- The search icon is at `app/assets/images/search.png`
+
+#### Hints/Suggestions:
+1) In order to make a cross-domain request to the API, you will have to use JSONP.
+2) All images are provided or given as URLs in the JSON. The rest of the page should be styled only via CSS.
+3) The search result should link to http://www.airbnb.com/rooms/<listing_id>.
+4) Add a date picker for dates. (if this is taking too long, feel free to not use a date picker)
+5) Guest dropdown should have options 1-16.
+6) No need to add pagination.
+7) Target the latest stable WebKit / Firefox release. Don't worry about responsiveness or cross-browser functionality with IE.
+
+
 # Rails Exercise
 
 ### Refactoring Exercise
-
 Refactor `controllers/people_controller.rb`, `mailers/emails.rb` and `tasks/accounts.rake`
 
 #### Hints/Suggestions:
-
-* avoid use of attr_accessible.
-* skinny controller fat model
-* create a spec test for the model.
-* use scopes.
-* if you plan to use a gem for any utilities, indicate that in a comment.
+- avoid use of attr_accessible.
+- skinny controller fat model
+- create a spec test for the model.
+- use scopes.
+- if you plan to use a gem for any utilities, indicate that in a comment.
