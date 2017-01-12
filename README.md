@@ -36,7 +36,7 @@ rake db:seed
 # Frontend Exercise
 
 ### The Exercise:
-Implement a page using React that renders Airbnb search results according to the mockup in `app/assets/fixtures/mockup.png`.
+Implement a page using React and Redux that renders Airbnb search results according to the mockup in `app/assets/fixtures/mockup.png`.
 Think about what constitutes a minimum viable product. There is no time limit, but the maximum time you should spend on this is 3 hours.
 
 #### Notes
