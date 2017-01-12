@@ -50,13 +50,13 @@ Think about what constitutes a minimum viable product. There is no time limit, b
 - The search icon is at `app/assets/images/search.png`
 
 #### Hints/Suggestions:
-1) In order to make a cross-domain request to the API, you will have to use JSONP.
-2) All images are provided or given as URLs in the JSON. The rest of the page should be styled only via CSS.
-3) The search result should link to http://www.airbnb.com/rooms/<listing_id>.
-4) Add a date picker for dates. (if this is taking too long, feel free to not use a date picker)
-5) Guest dropdown should have options 1-16.
-6) No need to add pagination.
-7) Target the latest stable WebKit / Firefox release. Don't worry about responsiveness or cross-browser functionality with IE.
+- In order to make a cross-domain request to the API, you will have to use JSONP.
+- All images are provided or given as URLs in the JSON. The rest of the page should be styled only via CSS.
+- The search result should link to http://www.airbnb.com/rooms/<listing_id>.
+- Add a date picker for dates. (if this is taking too long, feel free to not use a date picker)
+- Guest dropdown should have options 1-16.
+- No need to add pagination.
+- Target the latest stable WebKit / Firefox release. Don't worry about responsiveness or cross-browser functionality with IE.
 
 
 # Rails Exercise
