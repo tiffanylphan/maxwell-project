@@ -17,7 +17,7 @@ We don't expect it to be perfect (no production code is), but we also don't want
 This should be representative of something that you would be comfortable releasing to a production environment.  
 
 Also, spend whatever amount of time you think is reasonable.
-You may use whatever gems, frameworks and tools that you think are appropriate, just provide any special setup instructions when you submit your solution.
+You may use whatever libraries, frameworks and tools that you think are appropriate, just provide any special setup instructions when you submit your solution.
 
 You will not get any extra point for solving the challenge fast. Speed of delivery is not what we are looking for in this challenge.
 
@@ -46,3 +46,7 @@ Please do not squash commit before submission. We want to see incremental commit
 Most of the people taking the challenges already have a full time job.
 So take your time. Don't rush through it. There is no extra point
 for doing it fast.
+
+### 9. Programming Language
+
+Your choice on programming language to use, however the Maxwell stack currently is Ruby and Javascript. 
