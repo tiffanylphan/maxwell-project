@@ -12,9 +12,11 @@ const scoreDictionary = {
 const scoreGithubEvents = () => {
   axios.get('https://api.github.com/users/dhh/events/public')
     .then(response => {
-      console.log(response.data.reduce((a, c) => {
-        return a + (scoreDictionary[c.type] || 1);
-      }, 0));
+      console.log(
+        `DHH\'s github score is ${response.data.reduce((a, c) => {
+          return a + (scoreDictionary[c.type] || 1);
+        }, 0)}`
+      );
     })
 };
 
