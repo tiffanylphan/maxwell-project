@@ -18,6 +18,9 @@ const scoreGithubEvents = () => {
         }, 0)}`
       );
     })
+    .catch(err => {
+      console.log(err);
+    })
 };
 
 module.exports = scoreGithubEvents();
