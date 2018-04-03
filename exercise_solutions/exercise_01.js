@@ -19,5 +19,3 @@ const scoreGithubEvents = () => {
 };
 
 module.exports = scoreGithubEvents();
-
-
