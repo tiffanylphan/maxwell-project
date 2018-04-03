@@ -13,14 +13,14 @@ const scoreGithubEvents = () => {
   axios.get('https://api.github.com/users/dhh/events/public')
 
     .then(response => {
-      const score = response.data.reduce((a, c) => {
-        return a + (githubEventDictionary[c.type] || 1);
+      const totalScore = response.data.reduce((accumulator, event) => {
+        return accumulator + (githubEventDictionary[event.type] || 1);
       }, 0);
       console.log(
-        `DHH\'s github score is ${score}`
+        `DHH\'s github score is ${totalScore}`
       );
     })
-    
+
     .catch(err => {
       console.log(err);
     });
