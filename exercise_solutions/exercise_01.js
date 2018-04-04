@@ -26,4 +26,4 @@ const scoreGithubEvents = () => {
     });
 };
 
-module.exports = scoreGithubEvents();
+scoreGithubEvents();
