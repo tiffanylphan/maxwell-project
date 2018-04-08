@@ -18,6 +18,8 @@ class Transaction {
       'apple': 0.89
     };
 
+    this.histogram = constructHistogram(this.items, this.pricingTable);
+
     this.moneySaved = 0;
     this.totalPrice = 0;
 
@@ -25,11 +27,8 @@ class Transaction {
     this.calculateNormal = this.calculateNormal.bind(this);
   }
 
-  calculateSale(item, quantity, price, histogram) {
-    // get the keys of the object
+  calculateSale(item, quantity, price) {
     const quantityOptions = Object.keys(price);
-    // because we know that there are only two possible deals
-    // if the item quantity >= the last number in keys
     const bulkQuantity = quantityOptions[quantityOptions.length - 1];
     if (quantity >= bulkQuantity) {
       const cost = (Math.floor(quantity / bulkQuantity) * price[bulkQuantity]) + (quantity % bulkQuantity * price['1']);
@@ -37,33 +36,29 @@ class Transaction {
       this.totalPrice += cost;
       console.log(item, quantity, cost);
     } else {
-      this.calculateNormal(item, quantity, price['1'], histogram);
+      this.calculateNormal(item, quantity, price['1']);
     }
   }
 
-  calculateNormal(item, quantity, price, histogram) {
+  calculateNormal(item, quantity, price) {
     const cost = quantity * price;
     this.totalPrice += cost;
     console.log(item, quantity, cost);
   }
 
   printReceipt() {
-    const histogram = constructHistogram(this.items, this.pricingTable);
-    // loop through histogram
-    for (let item in histogram) {
+    for (let item in this.histogram) {
       const price = this.pricingTable[item];
-      // if pricingTable[item] is an object
       if (typeof price === 'object') {
-        this.calculateSale(item, histogram[item], price, histogram);
+        this.calculateSale(item, this.histogram[item], price);
       } else {
-        this.calculateNormal(item, histogram[item], price, histogram);
+        this.calculateNormal(item, this.histogram[item], price);
       }
     }
 
     console.log('total cost', this.totalPrice);
     console.log('saved', this.moneySaved);
   }
-
 }
 
 // helpers
