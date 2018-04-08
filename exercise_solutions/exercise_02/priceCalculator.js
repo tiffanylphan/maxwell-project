@@ -20,6 +20,9 @@ class Transaction {
 
     this.moneySaved = 0;
     this.totalPrice = 0;
+    
+    this.calculateSale = this.calculateSale.bind(this);
+    this.calculateNormal = this.calculateNormal.bind(this);
   }
 
   calculateSale(item) {
@@ -37,15 +40,19 @@ class Transaction {
 
   printReceipt() {
     const histogram = constructHistogram(this.items, this.pricingTable);
-    console.log(histogram);
     // loop through histogram
+    for (let item in histogram) {
       // if pricingTable[item] is an object
-        // calculateSale(item)
-      // else
-        // calculateNormal(item)
+      if (typeof this.pricingTable[item] === 'object') {
+        console.log('sale item', item)
+        // this.calculateSale(item);
+      } else {
+        // this.calculateNormal(item);
+      }
+    }
     
-    // console.log(this.totalPrice)
-    // console.log(this.moneySaved)
+    // console.log(this.totalPrice);
+    // console.log(this.moneySaved);
   }
 
 }
