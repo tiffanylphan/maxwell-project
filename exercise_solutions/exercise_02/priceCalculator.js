@@ -17,13 +17,22 @@ class Transaction {
       'apple': 0.89
     };
 
-    this.histogram = constructHistogram(this.items, this.pricingTable);
-
     this.moneySaved = 0.00;
     this.totalPrice = 0.00;
-
+    
+    this.countQuantity = this.countQuantity.bind(this);
     this.calculateSale = this.calculateSale.bind(this);
     this.calculateNormal = this.calculateNormal.bind(this);
+  }
+
+  countQuantity(items, pricingTable) {
+    const quantityTable = {};
+    items.forEach(item => {
+      if (pricingTable[item]) {
+        quantityTable[item] = quantityTable[item] + 1 || 1;
+      }
+    })
+    return quantityTable;
   }
 
   calculateSale(item, quantity, price) {
@@ -46,12 +55,13 @@ class Transaction {
   }
 
   printReceipt() {
-    for (let item in this.histogram) {
+    const quantityTable = this.countQuantity(this.items, this.pricingTable);
+    for (let item in quantityTable) {
       const price = this.pricingTable[item];
       if (typeof price === 'object') {
-        this.calculateSale(item, this.histogram[item], price);
+        this.calculateSale(item, quantityTable[item], price);
       } else {
-        this.calculateNormal(item, this.histogram[item], price);
+        this.calculateNormal(item, quantityTable[item], price);
       }
     }
 
@@ -61,14 +71,5 @@ class Transaction {
 }
 
 // helper function
-const constructHistogram = (items, pricingTable) => {
-  const histogram = {};
-  items.forEach(item => {
-    if (pricingTable[item]) {
-      histogram[item] = histogram[item] + 1 || 1;
-    }
-  })
-  return histogram;
-}
 
 module.exports = Transaction;
