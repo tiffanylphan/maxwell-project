@@ -31,23 +31,27 @@ class Transaction {
     return quantityTable;
   }
 
+  calculateBulk(item, quantity, price, bulkQuantity) {
+    const cost = (Math.floor(quantity / bulkQuantity) * price[bulkQuantity]) + (quantity % bulkQuantity * price['1']);
+    this.moneySaved += ((quantity * price['1'] - cost));
+    this.totalPrice += cost;
+    console.log(`${item}      ${quantity}           $${cost}`);
+  }
+
+  calculateIndividual(item, quantity, price) {
+    const cost = quantity * price;
+    this.totalPrice += cost;
+    console.log(`${item}      ${quantity}           $${cost}`);
+  }
+
   calculateSale(item, quantity, price) {
     const quantityOptions = Object.keys(price);
     const bulkQuantity = quantityOptions[quantityOptions.length - 1];
     if (quantity >= bulkQuantity) {
-      const cost = (Math.floor(quantity / bulkQuantity) * price[bulkQuantity]) + (quantity % bulkQuantity * price['1']);
-      this.moneySaved += ((quantity * price['1'] - cost));
-      this.totalPrice += cost;
-      console.log(`${item}      ${quantity}           $${cost}`);
+      this.calculateBulk(item, quantity, price, bulkQuantity);
     } else {
-      this.calculateNormal(item, quantity, price['1']);
+      this.calculateIndividual(item, quantity, price['1']);
     }
-  }
-
-  calculateNormal(item, quantity, price) {
-    const cost = quantity * price;
-    this.totalPrice += cost;
-    console.log(`${item}      ${quantity}           $${cost}`);
   }
 
   printReceipt() {
@@ -57,7 +61,7 @@ class Transaction {
       if (typeof price === 'object') {
         this.calculateSale(item, quantityTable[item], price);
       } else {
-        this.calculateNormal(item, quantityTable[item], price);
+        this.calculateIndividual(item, quantityTable[item], price);
       }
     }
 
