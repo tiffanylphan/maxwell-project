@@ -39,13 +39,13 @@ class Transaction {
     const cost = (Math.floor(quantity / bulkQuantity) * price[bulkQuantity]) + (quantity % bulkQuantity * price['1']);
     this.moneySaved += ((quantity * price['1'] - cost));
     this.totalPrice += cost;
-    this.printItemCost;
+    this.printItemCost(item, quantity, cost);
   }
 
   calculateIndividual(item, quantity, price) {
     const cost = quantity * price;
     this.totalPrice += cost;
-    this.printItemCost;
+    this.printItemCost(item, quantity, cost);
   }
 
   calculateSale(item, quantity, price) {
