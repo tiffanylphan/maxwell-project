@@ -60,7 +60,7 @@ class Transaction {
   }
 }
 
-// helpers
+// helper function
 const constructHistogram = (items, pricingTable) => {
   const histogram = {};
   items.forEach(item => {
