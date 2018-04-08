@@ -1,16 +1,28 @@
-//functional programming solution. 
+/* functional programming solution. 
 
 const pricingTable = {
   'Milk': {
     1: 3.97,
     2: 5
-  }
+  },
   'Bread': {
     1: 2.17,
     3: 6
-  }
-  'Banana': 0.99
+  },
+  'Banana': 0.99,
   'Apple': 0.89
+}
+
+const constructHistogram = (items) => {
+  const histogram = {};
+
+  // split items by comma
+  // loop through list
+    // trim string
+    // loop through string to check for items in pricing table
+      // histogram[item] = histogram[item]++ || 1
+
+  return histogram;
 }
 
 const priceCalculator = (items) => { 
@@ -37,20 +49,63 @@ const priceCalculator = (items) => {
   // console.log(price saved)
 };
 
-const constructHistogram = (items) => {
-  const histogram = {};
+-----------------------------------------------------------------------
+OOP solution
+*/
+class Transaction {
+  constructor(items) {
 
-  // split items by comma
-  // loop through list
-    // trim string
-    // loop through string to check for items in pricing table
-      // histogram[item] = histogram[item]++ || 1
+    this.items = items.split(',').map((item) => {
+      return item.trim();
+    });
 
-  return histogram;
+    this.pricingTable = {
+      'Milk': {
+        1: 3.97,
+        2: 5
+      },
+      'Bread': {
+        1: 2.17,
+        3: 6
+      },
+      'Banana': 0.99,
+      'Apple': 0.89
+    };
+
+    this.moneySaved = 0;
+    this.totalPrice = 0;
+  }
+
+  calculateSale(item) {
+    // price = Math.floor(histogram[item] / keys[lastkey#]) * bulk price + histogram[item] % keys[lastkey#] * individual price
+    // $ saved += Math.floor(histogram[item] / keys[lastkey#]) * individual price
+    // this.totalprice += price
+    // console.log (item, quantity, price)
+  }
+
+  calculateNormal(item) {
+    // price = quantity * number of items (histogram)
+    // this.totalprice += price
+    // console.log(item, quantity, price)
+  }
+
+  printReceipt() {
+    const histogram = constructHistogram(this.items, this.pricingTable);
+    // loop through histogram
+      // if pricingTable[item] is an object
+        // calculateSale(item)
+      // else
+        // calculateNormal(item)
+    
+    // console.log(this.totalPrice)
+    // console.log(this.moneySaved)
+  }
+
 }
 
-/* --------------------------------------------------------------------------- */
+// helpers
+const constructHistogram = (items, pricingTable) => {
 
+}
 
-
-module.exports = priceCalculator;
+module.exports = Transaction;

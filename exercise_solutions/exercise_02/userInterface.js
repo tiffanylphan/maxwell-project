@@ -1,5 +1,5 @@
 const readline = require('readline');
-const priceCalculator = require('./PriceCalculator');
+const Transaction = require('./PriceCalculator');
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -9,6 +9,7 @@ const rl = readline.createInterface({
 rl.question('Please enter all the items purchased separated by a comma ', (items) => {
   console.log(`Item     Quantity      Price`);
   console.log(`----------------------------`);
-  priceCalculator(items);
+  const transaction = new Transaction(items);
+  transaction.printReceipt();
   rl.close();
 });

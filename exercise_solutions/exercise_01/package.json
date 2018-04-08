@@ -1,0 +1,23 @@
+{
+  "name": "maxwell-project",
+  "version": "1.0.0",
+  "description": "### Tips and best practices",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/himaxwell/maxwell-interview.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/himaxwell/maxwell-interview/issues"
+  },
+  "homepage": "https://github.com/himaxwell/maxwell-interview#readme",
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
+}
