@@ -31,17 +31,21 @@ class Transaction {
     return quantityTable;
   }
 
+  printItemCost(item, quantity, cost) {
+    console.log(`${item}      ${quantity}           $${cost}`);
+  }
+
   calculateBulk(item, quantity, price, bulkQuantity) {
     const cost = (Math.floor(quantity / bulkQuantity) * price[bulkQuantity]) + (quantity % bulkQuantity * price['1']);
     this.moneySaved += ((quantity * price['1'] - cost));
     this.totalPrice += cost;
-    console.log(`${item}      ${quantity}           $${cost}`);
+    this.printItemCost;
   }
 
   calculateIndividual(item, quantity, price) {
     const cost = quantity * price;
     this.totalPrice += cost;
-    console.log(`${item}      ${quantity}           $${cost}`);
+    this.printItemCost;
   }
 
   calculateSale(item, quantity, price) {
@@ -69,7 +73,5 @@ class Transaction {
     console.log(`You saved $${this.moneySaved.toFixed(2)} today.`);
   }
 }
-
-// helper function
 
 module.exports = Transaction;
