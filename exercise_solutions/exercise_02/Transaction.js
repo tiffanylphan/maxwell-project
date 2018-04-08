@@ -19,10 +19,6 @@ class Transaction {
 
     this.moneySaved = 0.00;
     this.totalPrice = 0.00;
-    
-    this.countQuantity = this.countQuantity.bind(this);
-    this.calculateSale = this.calculateSale.bind(this);
-    this.calculateNormal = this.calculateNormal.bind(this);
   }
 
   countQuantity(items, pricingTable) {
