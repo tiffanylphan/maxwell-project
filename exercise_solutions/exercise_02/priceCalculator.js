@@ -33,7 +33,7 @@ class Transaction {
     const bulkQuantity = quantityOptions[quantityOptions.length - 1];
     if (quantity >= bulkQuantity) {
       const cost = (Math.floor(quantity / bulkQuantity) * price[bulkQuantity]) + (quantity % bulkQuantity * price['1']);
-      this.moneySaved += (quantity * price['1'] - cost);
+      this.moneySaved += +((quantity * price['1'] - cost).toFixed(2));
       this.totalPrice += cost;
       console.log(item, quantity, cost);
     } else {
