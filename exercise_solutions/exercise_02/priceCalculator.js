@@ -1,4 +1,3 @@
-
 class Transaction {
   constructor(items) {
     this.items = items.split(',').map((item) => {
@@ -8,11 +7,11 @@ class Transaction {
     this.pricingTable = {
       'milk': {
         1: 3.97,
-        2: 5
+        2: 5.00
       },
       'bread': {
         1: 2.17,
-        3: 6
+        3: 6.00
       },
       'banana': 0.99,
       'apple': 0.89
@@ -20,8 +19,8 @@ class Transaction {
 
     this.histogram = constructHistogram(this.items, this.pricingTable);
 
-    this.moneySaved = 0;
-    this.totalPrice = 0;
+    this.moneySaved = 0.00;
+    this.totalPrice = 0.00;
 
     this.calculateSale = this.calculateSale.bind(this);
     this.calculateNormal = this.calculateNormal.bind(this);
@@ -32,9 +31,9 @@ class Transaction {
     const bulkQuantity = quantityOptions[quantityOptions.length - 1];
     if (quantity >= bulkQuantity) {
       const cost = (Math.floor(quantity / bulkQuantity) * price[bulkQuantity]) + (quantity % bulkQuantity * price['1']);
-      this.moneySaved += +((quantity * price['1'] - cost).toFixed(2));
+      this.moneySaved += ((quantity * price['1'] - cost));
       this.totalPrice += cost;
-      console.log(item, quantity, cost);
+      console.log(`${item}      ${quantity}           $${cost}`);
     } else {
       this.calculateNormal(item, quantity, price['1']);
     }
@@ -43,7 +42,7 @@ class Transaction {
   calculateNormal(item, quantity, price) {
     const cost = quantity * price;
     this.totalPrice += cost;
-    console.log(item, quantity, cost);
+    console.log(`${item}      ${quantity}           $${cost}`);
   }
 
   printReceipt() {
@@ -56,8 +55,8 @@ class Transaction {
       }
     }
 
-    console.log('total cost', this.totalPrice);
-    console.log('saved', this.moneySaved);
+    console.log(`\nTotal price: $${this.totalPrice.toFixed(2)}`);
+    console.log(`You saved $${this.moneySaved.toFixed(2)} today.`);
   }
 }
 
