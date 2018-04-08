@@ -1,5 +1,5 @@
 const readline = require('readline');
-const Transaction = require('./PriceCalculator');
+const Transaction = require('./Transaction');
 
 const rl = readline.createInterface({
   input: process.stdin,
