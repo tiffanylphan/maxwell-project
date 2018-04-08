@@ -20,39 +20,48 @@ class Transaction {
 
     this.moneySaved = 0;
     this.totalPrice = 0;
-    
+
     this.calculateSale = this.calculateSale.bind(this);
     this.calculateNormal = this.calculateNormal.bind(this);
   }
 
-  calculateSale(item) {
-    // price = Math.floor(histogram[item] / keys[lastkey#]) * bulk price + histogram[item] % keys[lastkey#] * individual price
-    // $ saved += Math.floor(histogram[item] / keys[lastkey#]) * individual price
-    // this.totalprice += price
-    // console.log (item, quantity, price)
+  calculateSale(item, quantity, price, histogram) {
+    // get the keys of the object
+    const quantityOptions = Object.keys(price);
+    // because we know that there are only two possible deals
+    // if the item quantity >= the last number in keys
+    const bulkQuantity = quantityOptions[quantityOptions.length - 1];
+    if (quantity >= bulkQuantity) {
+      const cost = (Math.floor(quantity / bulkQuantity) * price[bulkQuantity]) + (quantity % bulkQuantity * price['1']);
+      this.moneySaved += (quantity * price['1'] - cost);
+      this.totalPrice += cost;
+      console.log(item, quantity, cost);
+    } else {
+      this.calculateNormal(item, quantity, price['1'], histogram);
+    }
   }
 
-  calculateNormal(item) {
-    // price = quantity * number of items (histogram)
-    // this.totalprice += price
-    // console.log(item, quantity, price)
+  calculateNormal(item, quantity, price, histogram) {
+    const cost = quantity * price;
+    this.totalPrice += cost;
+    console.log(item, quantity, cost);
   }
 
   printReceipt() {
     const histogram = constructHistogram(this.items, this.pricingTable);
     // loop through histogram
     for (let item in histogram) {
+      const price = this.pricingTable[item];
       // if pricingTable[item] is an object
-      if (typeof this.pricingTable[item] === 'object') {
-        console.log('sale item', item)
-        // this.calculateSale(item);
+      if (typeof price === 'object') {
+        this.calculateSale(item, histogram[item], price, histogram);
       } else {
-        // this.calculateNormal(item);
+        this.calculateNormal(item, histogram[item], price, histogram);
       }
     }
-    
-    // console.log(this.totalPrice);
-    // console.log(this.moneySaved);
+
+    console.log('total cost', this.totalPrice);
+    console.log('saved', this.moneySaved);
   }
 
 }
@@ -62,7 +71,7 @@ const constructHistogram = (items, pricingTable) => {
   const histogram = {};
   items.forEach(item => {
     if (pricingTable[item]) {
-      histogram[item] = histogram[item]++ || 1;
+      histogram[item] = histogram[item] + 1 || 1;
     }
   })
   return histogram;
