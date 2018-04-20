@@ -1,21 +1,21 @@
+const pricingTable = {
+  'milk': {
+    1: 3.97,
+    2: 5.00
+  },
+  'bread': {
+    1: 2.17,
+    3: 6.00
+  },
+  'banana': 0.99,
+  'apple': 0.89
+};
+
 class Transaction {
   constructor(items) {
     this.items = items.split(',').map((item) => {
       return item.trim().toLowerCase();
     });
-
-    this.pricingTable = {
-      'milk': {
-        1: 3.97,
-        2: 5.00
-      },
-      'bread': {
-        1: 2.17,
-        3: 6.00
-      },
-      'banana': 0.99,
-      'apple': 0.89
-    };
 
     this.moneySaved = 0.00;
     this.totalPrice = 0.00;
@@ -59,9 +59,11 @@ class Transaction {
   }
 
   printReceipt() {
-    const quantityTable = this.countQuantity(this.items, this.pricingTable);
+    console.log(`Item     Quantity      Price`);
+    console.log(`----------------------------`);
+    const quantityTable = this.countQuantity(this.items, pricingTable);
     for (let item in quantityTable) {
-      const price = this.pricingTable[item];
+      const price = pricingTable[item];
       if (typeof price === 'object') {
         this.calculateSale(item, quantityTable[item], price);
       } else {

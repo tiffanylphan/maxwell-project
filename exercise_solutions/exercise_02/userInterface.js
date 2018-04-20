@@ -7,8 +7,6 @@ const rl = readline.createInterface({
 });
 
 rl.question('Please enter all the items purchased separated by a comma \n', (items) => {
-  console.log(`Item     Quantity      Price`);
-  console.log(`----------------------------`);
   const transaction = new Transaction(items);
   transaction.printReceipt();
   rl.close();
